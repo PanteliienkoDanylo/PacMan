@@ -14,6 +14,9 @@ import java.awt.event.ActionEvent;
 
 
 public class Main extends JFrame {
+	Level1 level1;
+	Mario mario;
+
 
 	private JPanel contentPane;
 
@@ -22,25 +25,6 @@ public class Main extends JFrame {
 	 */
 	
 	public static void main(String[] args) {
-		
-		Mario mario = new Mario();
-		Level1 level1 = new Level1();
-		level1.drawFigure(mario.getMarioDots());
-		//level1.drawFigure(level1.getLevel1Dots());
-		boolean[][] a = level1.getLevel1();
-		for (int i=0; i<1; i++){
-			for (int j=0; j<1; j++){
-				if(a[i][j]==false){
-					System.out.print("_");
-				}}
-				System.out.println();
-				/*if (a[i][j]==true){
-					System.out.print("X");
-				}*/	
-		}
-		//System.out.println("_");
-		
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -57,22 +41,15 @@ public class Main extends JFrame {
 	 * Create the frame.
 	 */
 	public Main() {
+		level1 = new Level1();
+		mario = new Mario(level1);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new MyJPanel();
+		contentPane = new MyJPanel(mario, level1);
+		contentPane.setFocusable(true);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnGoright = new JButton("goRight");
-		btnGoright.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Mario mario = new Mario();
-				mario.goRight();
-				System.out.println(mario.startX);
-			}
-		});
-		btnGoright.setBounds(226, 228, 89, 23);
-		contentPane.add(btnGoright);
 	}
 }

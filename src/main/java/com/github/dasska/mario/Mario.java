@@ -4,12 +4,15 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Mario{
 
+public class Mario{
+    private Level1 level1;
+    private Mario mario;
 	private  ArrayList <Point> marioDots = new ArrayList<Point>();
 	int startX = 2;
 	int startY = 23;
-	public Mario() {
+	public Mario(Level1 level1) {
+		this.level1 = level1;
 		
 		marioDots.add(new Point(startX, startY));
 		marioDots.add(new Point(startX, startY-1));
@@ -61,11 +64,9 @@ public class Mario{
 		marioDots.get(2).x=startX;
 		marioDots.get(3).x=startX;
 		level1.drawFigure(getMarioDots());
-		
 	}
 	
 	public void goRight(){
-		Level1 level1 = new Level1();
 		level1.removeFigure(getMarioDots());
 		startX = startX+1;
 		marioDots.get(0).x=startX;
@@ -76,7 +77,6 @@ public class Mario{
 		
 	}
 	public void goUp(){
-		Level1 level1 = new Level1();
 		level1.removeFigure(getMarioDots());
 		startY = startY-1;
 		marioDots.get(0).y=startY;
@@ -87,7 +87,6 @@ public class Mario{
 		
 	}
 	public void goDown(){
-		Level1 level1 = new Level1();
 		level1.removeFigure(getMarioDots());
 		startY = startY+1;
 		marioDots.get(0).y=startY;
@@ -95,6 +94,5 @@ public class Mario{
 		marioDots.get(2).y=startY-2;
 		marioDots.get(3).y=startY-3;
 		level1.drawFigure(getMarioDots());
-		
 	}
 }

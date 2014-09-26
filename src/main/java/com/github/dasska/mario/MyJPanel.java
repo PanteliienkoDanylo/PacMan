@@ -6,35 +6,54 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
-
 public class MyJPanel extends JPanel  {
-
-	public void formKeyPressed(KeyEvent evt){
-		Mario mario = new Mario();
-		switch (evt.getKeyCode()){
-		case KeyEvent.VK_RIGHT:
-			mario.goRight();
-			break;
-		case KeyEvent.VK_LEFT:
-			mario.goLeft();
-			break;
-		case KeyEvent.VK_SPACE:
-			mario.goUp();
-			break;
-
-		}		
+	final Mario mario;
+	final Level1 level1;
+	
+	public MyJPanel(Mario mario, Level1 level1) {
+		this.mario = mario;
+		this.level1 = level1;
+		registerKeyListener();
 	}
-	public void paint(Graphics g) {
+	
+	private void registerKeyListener() {
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("код: "+e.getKeyCode());
+				switch (e.getKeyCode()){
+				case KeyEvent.VK_RIGHT:
+					mario.goRight();
+					repaint();
+					break;
+				case KeyEvent.VK_LEFT:
+					mario.goLeft();
+					repaint();
+					break;
+				case KeyEvent.VK_SPACE:
+					mario.goUp();
+					repaint();
+					new Thread(new JumpThread()).start();
+					break;
+				}		
 			}
-		});
+		});		
+	}
+	
+	private class JumpThread implements Runnable {
+		public void run() {
+			try {
+				Thread.sleep(500);
+				mario.goDown();
+				repaint();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void paint(Graphics g) {
 
-		Main main = new Main();
-		Level1 level1 = new Level1();
-		Mario mario = new Mario();
 		level1.teksturu();
 		level1.removeFigure(mario.getMarioDots()); 
 		level1.drawFigure(mario.getMarioDots());
