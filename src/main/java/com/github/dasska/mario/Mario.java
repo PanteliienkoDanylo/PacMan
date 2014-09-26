@@ -4,10 +4,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-sndm
-
-
-manfdm
 public class Mario{
 
 	private  ArrayList <Point> marioDots = new ArrayList<Point>();
