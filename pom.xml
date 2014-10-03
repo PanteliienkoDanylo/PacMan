@@ -33,7 +33,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.github.dasska.mario.Main</mainClass>
+							<mainClass>com.github.dasska.pacman.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
