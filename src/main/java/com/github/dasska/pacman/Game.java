@@ -1,5 +1,9 @@
 package com.github.dasska.pacman;
 
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Set;
+
 import javax.swing.JPanel;
 
 public abstract class Game {
@@ -8,17 +12,23 @@ public abstract class Game {
 	public abstract boolean[][] getWalls();
 	public abstract Monster[] getMonsters();
 	public abstract Pacman getPacman();
+	public abstract Set<Point> getCoins();
 	
-	private JPanel panel;
+	private List<GameObserver> observerList = new LinkedList<GameObserver>();
 	
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
+	public void addObserver(GameObserver observer) {
+		observerList.add(observer);
 	}
 	
 	public void start() {
 		for(Monster monster: getMonsters())
 			monster.start();
 	}
+	
+	public void stop() {
+		for(Monster monster: getMonsters())
+			monster.stop();
+	}	
 	
 	public boolean canMoveUp(Point point) {
 		int nextY = point.getY()-1;
@@ -55,11 +65,39 @@ public abstract class Game {
 	}
 	
 	public boolean kill(Point point) {
-		return point.equals(getPacman().getPoint());
+		boolean result = point.equals(getPacman().getPoint());
+		if (result) {
+			for (GameObserver observer: observerList)
+				observer.gameOver();
+		}
+		return result;
+	}
+	
+	public boolean gameOver() {
+		boolean result = false;
+		for (Monster monster: getMonsters())
+			if (getPacman().getPoint().equals(monster.getPoint())) {
+				result = true;
+				break;
+			}
+		if (result) {
+			for (GameObserver observer: observerList)
+				observer.gameOver();
+		}
+		return result;
+	}	
+	
+	public boolean win() {
+		boolean result = getCoins().size() == 0;
+		if (result) {
+			for (GameObserver observer: observerList)
+				observer.win();
+		}
+		return result;
 	}
 	
 	public void refresh() {
-		if (panel != null)
-			panel.repaint();
+		for (GameObserver observer: observerList)
+			observer.refresh();
 	}
 }

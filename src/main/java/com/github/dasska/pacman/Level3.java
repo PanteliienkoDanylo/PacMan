@@ -1,14 +1,9 @@
 package com.github.dasska.pacman;
 
+import java.awt.Color;
 import java.util.Arrays;
 
-public class Level3 extends Game {
-	private int width;
-	private int height;
-	private boolean[][] walls;
-	private Monster[] monsters;
-	private Pacman pacman;
-	
+public class Level3 extends LevelBase {
 	public Level3() {
 		width = 23;
 		height = 23;
@@ -17,34 +12,34 @@ public class Level3 extends Game {
 		fillWals();
 		
 		monsters = new Monster[] {
-					/*new MonsterHorizontal(600, new Point(10,1), this),
-					new MonsterHorizontal(620, new Point(16,1), this),
-					new MonsterHorizontal(640, new Point(18,2), this),
-					new MonsterHorizontal(550, new Point(19,4), this),
-					new MonsterHorizontal(490, new Point(13,1), this),
-					new MonsterHorizontal(500, new Point(7,6), this),
-					new MonsterHorizontal(525, new Point(12,10), this),
-					new MonsterHorizontal(475, new Point(18,9), this),
-					new MonsterHorizontal(535, new Point(4,11), this),
-					new MonsterHorizontal(455, new Point(12,13), this),
-					new MonsterHorizontal(566, new Point(5,15), this),
-					new MonsterHorizontal(466, new Point(8,17), this),
-					new MonsterHorizontal(512, new Point(10,18), this),
-					new MonsterHorizontal(468, new Point(8,21), this),
-					new MonsterHorizontal(433, new Point(15,21), this),
-					new MonsterVertical(675, new Point(2,2), this),
-					new MonsterVertical(675, new Point(12,3), this),
-					new MonsterVertical(675, new Point(7,4), this),
-					new MonsterVertical(675, new Point(20,2), this),
-					new MonsterVertical(675, new Point(1,6), this),
-					new MonsterVertical(675, new Point(21,6), this),
-					new MonsterVertical(675, new Point(13,7), this),
-					new MonsterVertical(675, new Point(5,10), this),
-					new MonsterVertical(675, new Point(9,11), this),
-					new MonsterVertical(675, new Point(11,12), this),
-					new MonsterVertical(675, new Point(4,14), this),
-					new MonsterVertical(675, new Point(9,21), this),*/
-					new MonsterDecart(675, new Point(9,21), this),
+					new MonsterHorizontal(600, new Point(10,1), this, Color.RED),
+					new MonsterHorizontal(620, new Point(16,1), this, Color.RED),
+					new MonsterHorizontal(640, new Point(18,2), this, Color.RED),
+					new MonsterHorizontal(550, new Point(19,4), this, Color.RED),
+					new MonsterHorizontal(490, new Point(13,1), this, Color.RED),
+					new MonsterHorizontal(500, new Point(7,6), this, Color.RED),
+					new MonsterHorizontal(525, new Point(12,10), this, Color.RED),
+					new MonsterHorizontal(475, new Point(18,9), this, Color.RED),
+					new MonsterHorizontal(535, new Point(4,11), this, Color.RED),
+					new MonsterHorizontal(455, new Point(12,13), this, Color.RED),
+					new MonsterHorizontal(566, new Point(5,15), this, Color.RED),
+					new MonsterHorizontal(466, new Point(8,17), this, Color.RED),
+					new MonsterHorizontal(512, new Point(10,18), this, Color.RED),
+					new MonsterHorizontal(468, new Point(8,21), this, Color.RED),
+					new MonsterHorizontal(433, new Point(15,21), this, Color.RED),
+					new MonsterVertical(675, new Point(2,2), this, Color.RED),
+					new MonsterVertical(675, new Point(12,3), this, Color.RED),
+					new MonsterVertical(675, new Point(7,4), this, Color.RED),
+					new MonsterVertical(675, new Point(20,2), this, Color.RED),
+					new MonsterVertical(675, new Point(1,6), this, Color.RED),
+					new MonsterVertical(675, new Point(21,6), this, Color.RED),
+					new MonsterVertical(675, new Point(13,7), this, Color.RED),
+					new MonsterVertical(675, new Point(5,10), this, Color.RED),
+					new MonsterVertical(675, new Point(9,11), this, Color.RED),
+					new MonsterVertical(675, new Point(11,12), this, Color.RED),
+					new MonsterVertical(675, new Point(4,14), this, Color.RED),
+					new MonsterVertical(675, new Point(9,21), this, Color.RED),
+					new MonsterDecart(675, new Point(9,21), this, Color.GREEN),
 					
 				};
 		
@@ -275,30 +270,5 @@ public class Level3 extends Game {
 		walls[20][19] = true;
 		walls[20][20] = true;
 				
-	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-	
-	@Override
-	public int getHeight() {
-		return height;
-	}
-	
-	@Override
-	public boolean[][] getWalls() {
-		return walls;
-	}
-	
-	@Override 
-	public Monster[] getMonsters() {
-		return monsters;
-	}
-
-	@Override
-	public Pacman getPacman() {
-		return pacman;
 	}
 }

@@ -1,14 +1,10 @@
 package com.github.dasska.pacman;
 
+import java.awt.Color;
 import java.util.Arrays;
+import java.util.HashSet;
 
-public class Level2 extends Game {
-	private int width;
-	private int height;
-	private boolean[][] walls;
-	private Monster[] monsters;
-	private Pacman pacman;
-	
+public class Level2 extends LevelBase {
 	public Level2() {
 		width = 23;
 		height = 23;
@@ -17,19 +13,23 @@ public class Level2 extends Game {
 		fillWals();
 		
 		monsters = new Monster[] {
-					new MonsterHorizontal(600, new Point(13,1), this),
-					new MonsterHorizontal(650, new Point(9,5), this),
-					new MonsterHorizontal(700, new Point(5,9), this),
-					new MonsterHorizontal(550, new Point(9,13), this),
-					new MonsterHorizontal(750, new Point(21,17), this),
-					new MonsterHorizontal(625, new Point(17,21), this),
-					new MonsterVertical(575, new Point(5,1), this),
-					new MonsterVertical(590, new Point(1,5), this),
-					new MonsterVertical(615, new Point(21,9), this),
-					new MonsterVertical(550, new Point(17,13), this),
-					new MonsterVertical(600, new Point(13,17), this),
-					new MonsterVertical(675, new Point(9,21), this)
+					new MonsterHorizontal(600, new Point(13,1), this, Color.RED),
+					new MonsterHorizontal(650, new Point(9,5), this, Color.RED),
+					new MonsterHorizontal(700, new Point(5,9), this ,Color.RED),
+					new MonsterHorizontal(550, new Point(9,13), this, Color.RED),
+					new MonsterHorizontal(750, new Point(21,17), this, Color.RED),
+					new MonsterHorizontal(625, new Point(17,21), this, Color.RED),
+					new MonsterVertical(575, new Point(5,1), this, Color.RED),
+					new MonsterVertical(590, new Point(1,5), this, Color.RED),
+					new MonsterVertical(615, new Point(21,9), this, Color.RED),
+					new MonsterVertical(550, new Point(17,13), this, Color.RED),
+					new MonsterVertical(600, new Point(13,17), this, Color.RED),
+					new MonsterVertical(675, new Point(9,21), this, Color.RED)
 				};
+		
+		coins = new HashSet<Point>();
+		coins.add(new Point(1, 2));
+		coins.add(new Point(2, 2));
 		
 		pacman = new Pacman(new Point(8, 12),  this);
 	}
@@ -170,30 +170,5 @@ public class Level2 extends Game {
 		walls[19][18] = true;
 		walls[19][19] = true;
 		walls[19][20] = true;
-	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-	
-	@Override
-	public int getHeight() {
-		return height;
-	}
-	
-	@Override
-	public boolean[][] getWalls() {
-		return walls;
-	}
-	
-	@Override 
-	public Monster[] getMonsters() {
-		return monsters;
-	}
-
-	@Override
-	public Pacman getPacman() {
-		return pacman;
 	}
 }

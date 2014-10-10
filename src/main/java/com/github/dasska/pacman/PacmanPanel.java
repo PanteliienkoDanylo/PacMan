@@ -4,26 +4,32 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class PacmanPanel extends JPanel  {
+public class PacmanPanel extends JPanel implements GameObserver {
 	private static final int GAP = 20;
 	private static final int BOX = 20;
 	private static final int ROUND = 8;
 	
 	final Game game;
 	
-	//private BufferedImage image;
+	private BufferedImage wall;
 
 	public PacmanPanel(Game game) {
 		this.game = game;
 		registerKeyListener();
-		/*
+		
 		try {                
-	          image = ImageIO.read(new File("wall.jpg"));
-	       } catch (IOException ex) {
+	          wall = ImageIO.read(getClass().getResource("/wall.jpg"));
+	    } catch (IOException ex) {
 	    	   ex.printStackTrace();
-	       }*/
+	    }
+		
 	}
 	
 	private void registerKeyListener() {
@@ -52,6 +58,7 @@ public class PacmanPanel extends JPanel  {
 		super.paint(g);
 		g.setColor(Color.black);
 		paintWalls(g);
+		paintCoins(g);
 		paintMonsters(g);
 		paintPackman(g);
 	}
@@ -62,23 +69,34 @@ public class PacmanPanel extends JPanel  {
 			for (int j=0; j<game.getHeight(); j++)
 				g.drawRect(GAP+i*BOX, GAP+j*BOX, BOX, BOX);
 				
+				
 		g.setColor(Color.ORANGE);
 		boolean[][] walls = game.getWalls();
 		for (int i=0; i<game.getHeight(); i++)
 			for (int j=0; j<game.getHeight(); j++)
 				if (walls[i][j])
-					g.fillRect(GAP+i*BOX, GAP+j*BOX, BOX, BOX);
-					//g.drawImage(image, 0, 0, null);
+					// g.fillRect(GAP+i*BOX, GAP+j*BOX, BOX, BOX);
+					g.drawImage(wall, GAP+i*BOX, GAP+j*BOX, BOX, BOX, null);
 	}
 	
 	private void paintMonsters(Graphics g) {
-		g.setColor(Color.RED);
-
     	for(Monster monster: game.getMonsters()) {
+    		g.setColor(monster.getColor());
     		Point p = monster.getPoint();
     		g.fillOval(
     				GAP+p.getX()*BOX + BOX/2 - ROUND/2, 
     				GAP+p.getY()*BOX + BOX/2 - ROUND/2, 
+    				ROUND, ROUND);
+		}
+	}
+	
+	private void paintCoins(Graphics g) {
+		g.setColor(Color.YELLOW);
+		
+    	for(Point p: game.getCoins()) {
+    		g.fillOval(
+    				GAP+p.getX()*BOX + BOX/2 - ROUND/4, 
+    				GAP+p.getY()*BOX + BOX/2 - ROUND/4, 
     				ROUND, ROUND);
 		}
 	}
@@ -90,5 +108,17 @@ public class PacmanPanel extends JPanel  {
     			GAP+p.getX()*BOX + BOX/2 - ROUND/2, 
     			GAP+p.getY()*BOX + BOX/2 - ROUND/2, 
     			ROUND, ROUND);		
+	}
+	
+	public void refresh() {
+		repaint();
+	}
+	
+	public void win() {
+		repaint();
+	}
+	
+	public void gameOver() {
+    	repaint();
 	}
 }

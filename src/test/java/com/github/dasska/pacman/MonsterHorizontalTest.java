@@ -1,6 +1,8 @@
 package com.github.dasska.pacman;
 
+import java.awt.Color;
 import java.util.Arrays;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -11,7 +13,7 @@ public class MonsterHorizontalTest {
 	
 	@Test
 	public void moveNoWallsTest() {
-		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new NoWallsGame());
+		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new NoWallsGame(), Color.RED);
 		monster.move();
 		
 		assertThat(monster.getPoint(), is(new Point(2, 1)));
@@ -23,7 +25,7 @@ public class MonsterHorizontalTest {
 	
 	@Test
 	public void moveRightWallTest() {
-		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new RightWallGame());
+		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new RightWallGame(), Color.RED);
 		monster.move();
 		
 		assertThat(monster.getPoint(), is(new Point(0, 1)));
@@ -58,6 +60,11 @@ public class MonsterHorizontalTest {
 		public Pacman getPacman() {
 			throw new UnsupportedOperationException();
 		}
+
+		@Override
+		public Set<Point> getCoins() {
+			throw new UnsupportedOperationException();
+		}
 	}
 	
 	private class RightWallGame extends Game {
@@ -87,6 +94,11 @@ public class MonsterHorizontalTest {
 		public Pacman getPacman() {
 			throw new UnsupportedOperationException();
 		}
+
+		@Override
+		public Set<Point> getCoins() {
+			throw new UnsupportedOperationException();
+		}		
 	}	
 
 }

@@ -1,9 +1,11 @@
 package com.github.dasska.pacman;
 
+import java.awt.Color;
+
 public class MonsterDecart extends Monster {
 
-	public MonsterDecart(int sleep, Point point, Game game) {
-		super(sleep, point, game);
+	public MonsterDecart(int sleep, Point point, Game game, Color color) {
+		super(sleep, point, game, color);
 	}
 
 	@Override

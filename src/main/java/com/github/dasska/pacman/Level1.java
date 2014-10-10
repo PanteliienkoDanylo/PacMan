@@ -1,14 +1,10 @@
 package com.github.dasska.pacman;
 
+import java.awt.Color;
 import java.util.Arrays;
+import java.util.HashSet;
 
-public class Level1 extends Game {
-	private int width;
-	private int height;
-	private boolean[][] walls;
-	private Monster[] monsters;
-	private Pacman pacman;
-	
+public class Level1 extends LevelBase {
 	public Level1() {
 		width = 5;
 		height = 5;
@@ -16,8 +12,11 @@ public class Level1 extends Game {
 		walls = new boolean[width][height];
 		fillWals();
 		
+		coins = new HashSet<Point>();
+		coins.add(new Point(1, 2));
+		
 		monsters = new Monster[] {
-					new MonsterHorizontal(1000, new Point(1,1), this)
+					new MonsterHorizontal(1000, new Point(1,1), this, Color.RED)
 				};
 		
 		pacman = new Pacman(new Point(3, 3),  this);
@@ -35,30 +34,5 @@ public class Level1 extends Game {
 		}
 		
 		walls[2][2] = true;
-	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-	
-	@Override
-	public int getHeight() {
-		return height;
-	}
-	
-	@Override
-	public boolean[][] getWalls() {
-		return walls;
-	}
-	
-	@Override 
-	public Monster[] getMonsters() {
-		return monsters;
-	}
-
-	@Override
-	public Pacman getPacman() {
-		return pacman;
 	}
 }

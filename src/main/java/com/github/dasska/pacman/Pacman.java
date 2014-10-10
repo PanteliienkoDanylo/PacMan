@@ -16,33 +16,36 @@ public class Pacman {
 	public void up() {
 		if (game.canMoveUp(point)) {
 			point.up(game.getHeight());
-			win();
+			move();
 		}
 	}
 
 	public void down() {
 		if (game.canMoveDown(point)) {
 			point.down(game.getHeight());
-			win();
+			move();
 		}
 	}
 	
 	public void left() {
 		if (game.canMoveLeft(point)) {
 			point.left(game.getWidth());
-			win();
+			move();
 		}		
 	}
 	
 	public void right() {
 		if (game.canMoveRight(point)) {
 			point.right(game.getWidth());
-			win();
+			move();
 		}		
 	}
 	
-	private void win() {
-		// check win conditions
+	private void move() {
+		game.getCoins().remove(point);
+		game.win();
+		game.gameOver();
+		
 		game.refresh();
 	}
 }

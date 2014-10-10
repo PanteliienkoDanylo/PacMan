@@ -1,14 +1,9 @@
 package com.github.dasska.pacman;
 
+import java.awt.Color;
 import java.util.Arrays;
 
-public class Level4 extends Game {
-	private int width;
-	private int height;
-	private boolean[][] walls;
-	private Monster[] monsters;
-	private Pacman pacman;
-	
+public class Level4 extends LevelBase {
 	public Level4() {
 		width = 23;
 		height = 23;
@@ -17,7 +12,7 @@ public class Level4 extends Game {
 		fillWals();
 		
 		monsters = new Monster[] {
-					new MonsterDecart(600, new Point(10,1), this),
+					new MonsterDecart(600, new Point(10,1), this, Color.GREEN),
 					
 				};
 		
@@ -36,30 +31,5 @@ public class Level4 extends Game {
 		}
 		
 		
-	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-	
-	@Override
-	public int getHeight() {
-		return height;
-	}
-	
-	@Override
-	public boolean[][] getWalls() {
-		return walls;
-	}
-	
-	@Override 
-	public Monster[] getMonsters() {
-		return monsters;
-	}
-
-	@Override
-	public Pacman getPacman() {
-		return pacman;
 	}
 }

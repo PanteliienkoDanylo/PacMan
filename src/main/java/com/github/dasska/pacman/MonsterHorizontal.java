@@ -1,10 +1,12 @@
 package com.github.dasska.pacman;
 
+import java.awt.Color;
+
 public class MonsterHorizontal extends Monster {
 	private boolean goRight = true;
 	
-	public MonsterHorizontal(int sleep, Point point, Game game) {
-		super(sleep, point, game);
+	public MonsterHorizontal(int sleep, Point point, Game game, Color color) {
+		super(sleep, point, game, color);
 	}
 
 	public void move() {

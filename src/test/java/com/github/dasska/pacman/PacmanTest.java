@@ -1,6 +1,8 @@
 package com.github.dasska.pacman;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -51,13 +53,18 @@ public class PacmanTest {
 
 		@Override
 		public Monster[] getMonsters() {
-			throw new UnsupportedOperationException();
+			return new Monster[]{};
 		}
 
 		@Override
 		public Pacman getPacman() {
 			throw new UnsupportedOperationException();
 		}
+		
+		@Override
+		public Set<Point> getCoins() {
+			return new HashSet<Point>();
+		}		
 	}
 	
 	private class RightWallGame extends Game {
@@ -80,13 +87,18 @@ public class PacmanTest {
 
 		@Override
 		public Monster[] getMonsters() {
-			throw new UnsupportedOperationException();
+			return new Monster[]{};
 		}
 
 		@Override
 		public Pacman getPacman() {
 			throw new UnsupportedOperationException();
 		}
+
+		@Override
+		public Set<Point> getCoins() {
+			return new HashSet<Point>();
+		}		
 	}	
 
 }
