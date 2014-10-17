@@ -1,6 +1,5 @@
 package com.github.dasska.pacman;
 
-import java.awt.Color;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -13,25 +12,50 @@ public class Level2 extends LevelBase {
 		fillWals();
 		
 		monsters = new Monster[] {
-					new MonsterHorizontal(600, new Point(13,1), this, Color.RED),
-					new MonsterHorizontal(650, new Point(9,5), this, Color.RED),
-					new MonsterHorizontal(700, new Point(5,9), this ,Color.RED),
-					new MonsterHorizontal(550, new Point(9,13), this, Color.RED),
-					new MonsterHorizontal(750, new Point(21,17), this, Color.RED),
-					new MonsterHorizontal(625, new Point(17,21), this, Color.RED),
-					new MonsterVertical(575, new Point(5,1), this, Color.RED),
-					new MonsterVertical(590, new Point(1,5), this, Color.RED),
-					new MonsterVertical(615, new Point(21,9), this, Color.RED),
-					new MonsterVertical(550, new Point(17,13), this, Color.RED),
-					new MonsterVertical(600, new Point(13,17), this, Color.RED),
-					new MonsterVertical(675, new Point(9,21), this, Color.RED)
+					new MonsterHorizontal(600, new Point(13,1), this),
+					new MonsterHorizontal(650, new Point(9,5), this),
+					new MonsterHorizontal(700, new Point(5,9), this),
+					new MonsterDecart(550, new Point(9,13), this),
+					new MonsterHorizontal(750, new Point(21,17), this),
+					new MonsterHorizontal(625, new Point(17,21), this),
+					new MonsterVertical(575, new Point(5,1), this),
+					new MonsterDecart(590, new Point(1,5), this),
+					new MonsterVertical(615, new Point(21,9), this),
+					new MonsterVertical(550, new Point(17,13), this),
+					new MonsterVertical(600, new Point(13,17), this),
+					new MonsterVertical(675, new Point(9,21), this)
 				};
 		
 		coins = new HashSet<Point>();
-		coins.add(new Point(1, 2));
-		coins.add(new Point(2, 2));
+		for(int i = 1; i < 22; i++){
+			coins.add(new Point(i, 1));
+			coins.add(new Point(i, 5));
+			coins.add(new Point(i, 9));
+			coins.add(new Point(i, 13));
+			coins.add(new Point(i, 17));
+			coins.add(new Point(i, 21));
+			coins.add(new Point(1, i));
+			coins.add(new Point(5, i));
+			coins.add(new Point(9, i));
+			coins.add(new Point(13, i));
+			coins.add(new Point(17, i));
+			coins.add(new Point(21, i));
+		}
+		for(int i = 1; i < 11; i++){
+			coins.add(new Point(2*i, 2));
+			coins.add(new Point(2*i, 4));
+			coins.add(new Point(2*i, 6));
+			coins.add(new Point(2*i, 8));
+			coins.add(new Point(2*i, 10));
+			coins.add(new Point(2*i, 12));
+			coins.add(new Point(2*i, 14));
+			coins.add(new Point(2*i, 16));
+			coins.add(new Point(2*i, 18));
+			coins.add(new Point(2*i, 20));
+			
+		}
 		
-		pacman = new Pacman(new Point(8, 12),  this);
+		pacman = new Pacman(new Point(5, 13),  this);
 	}
 
 	private void fillWals() {

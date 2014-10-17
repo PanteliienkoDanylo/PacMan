@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Set;
 
-import javax.swing.JPanel;
-
 public abstract class Game {
 	public abstract int getWidth();
 	public abstract int getHeight();

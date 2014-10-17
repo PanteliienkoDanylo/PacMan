@@ -5,8 +5,8 @@ import java.awt.Color;
 public class MonsterVertical extends Monster {
 private boolean goUp = true;
 	
-	public MonsterVertical(int sleep, Point point, Game game, Color color) {
-		super(sleep, point, game, color);
+	public MonsterVertical(int sleep, Point point, Game game) {
+		super(sleep, point, game, Color.RED);
 	}
 
 	public void move() {

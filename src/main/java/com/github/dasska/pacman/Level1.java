@@ -1,6 +1,5 @@
 package com.github.dasska.pacman;
 
-import java.awt.Color;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -13,10 +12,17 @@ public class Level1 extends LevelBase {
 		fillWals();
 		
 		coins = new HashSet<Point>();
+		coins.add(new Point(1, 1));
 		coins.add(new Point(1, 2));
+		coins.add(new Point(1, 3));
+		coins.add(new Point(2, 1));
+		coins.add(new Point(2, 3));
+		coins.add(new Point(3, 1));
+		coins.add(new Point(3, 2));
+		coins.add(new Point(3, 3));
 		
 		monsters = new Monster[] {
-					new MonsterHorizontal(1000, new Point(1,1), this, Color.RED)
+					new MonsterHorizontal(1000, new Point(1,1), this)
 				};
 		
 		pacman = new Pacman(new Point(3, 3),  this);

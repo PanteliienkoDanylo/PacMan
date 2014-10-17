@@ -13,7 +13,7 @@ public class MonsterHorizontalTest {
 	
 	@Test
 	public void moveNoWallsTest() {
-		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new NoWallsGame(), Color.RED);
+		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new NoWallsGame());
 		monster.move();
 		
 		assertThat(monster.getPoint(), is(new Point(2, 1)));
@@ -25,7 +25,7 @@ public class MonsterHorizontalTest {
 	
 	@Test
 	public void moveRightWallTest() {
-		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new RightWallGame(), Color.RED);
+		Monster monster = new MonsterHorizontal(1000, new Point(1, 1), new RightWallGame());
 		monster.move();
 		
 		assertThat(monster.getPoint(), is(new Point(0, 1)));

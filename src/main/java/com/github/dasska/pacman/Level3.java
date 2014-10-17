@@ -1,7 +1,7 @@
 package com.github.dasska.pacman;
 
-import java.awt.Color;
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class Level3 extends LevelBase {
 	public Level3() {
@@ -12,38 +12,14 @@ public class Level3 extends LevelBase {
 		fillWals();
 		
 		monsters = new Monster[] {
-					new MonsterHorizontal(600, new Point(10,1), this, Color.RED),
-					new MonsterHorizontal(620, new Point(16,1), this, Color.RED),
-					new MonsterHorizontal(640, new Point(18,2), this, Color.RED),
-					new MonsterHorizontal(550, new Point(19,4), this, Color.RED),
-					new MonsterHorizontal(490, new Point(13,1), this, Color.RED),
-					new MonsterHorizontal(500, new Point(7,6), this, Color.RED),
-					new MonsterHorizontal(525, new Point(12,10), this, Color.RED),
-					new MonsterHorizontal(475, new Point(18,9), this, Color.RED),
-					new MonsterHorizontal(535, new Point(4,11), this, Color.RED),
-					new MonsterHorizontal(455, new Point(12,13), this, Color.RED),
-					new MonsterHorizontal(566, new Point(5,15), this, Color.RED),
-					new MonsterHorizontal(466, new Point(8,17), this, Color.RED),
-					new MonsterHorizontal(512, new Point(10,18), this, Color.RED),
-					new MonsterHorizontal(468, new Point(8,21), this, Color.RED),
-					new MonsterHorizontal(433, new Point(15,21), this, Color.RED),
-					new MonsterVertical(675, new Point(2,2), this, Color.RED),
-					new MonsterVertical(675, new Point(12,3), this, Color.RED),
-					new MonsterVertical(675, new Point(7,4), this, Color.RED),
-					new MonsterVertical(675, new Point(20,2), this, Color.RED),
-					new MonsterVertical(675, new Point(1,6), this, Color.RED),
-					new MonsterVertical(675, new Point(21,6), this, Color.RED),
-					new MonsterVertical(675, new Point(13,7), this, Color.RED),
-					new MonsterVertical(675, new Point(5,10), this, Color.RED),
-					new MonsterVertical(675, new Point(9,11), this, Color.RED),
-					new MonsterVertical(675, new Point(11,12), this, Color.RED),
-					new MonsterVertical(675, new Point(4,14), this, Color.RED),
-					new MonsterVertical(675, new Point(9,21), this, Color.RED),
-					new MonsterDecart(675, new Point(9,21), this, Color.GREEN),
 					
+					new MonsterDecart(675, new Point(9,21), this),					
 				};
-		
+
 		pacman = new Pacman(new Point(3, 19),  this);
+		
+		coins = new HashSet<Point>();
+		coins.add(new Point(1, 1));
 	}
 
 	private void fillWals() {
