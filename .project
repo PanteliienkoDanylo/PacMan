@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>GitHubMario</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/resources/monster.jpg</name>
+			<type>1</type>
+			<location>C:/Users/comp/Desktop/monster.jpg</location>
+		</link>
+		<link>
+			<name>src/main/resources/monsterWithBrain.jpg</name>
+			<type>1</type>
+			<location>C:/Users/comp/Desktop/monsterWithBrain.jpg</location>
+		</link>
+		<link>
+			<name>src/main/resources/pacmanMuzik.mp3</name>
+			<type>1</type>
+			<location>C:/Users/comp/Desktop/pacmanMuzik.mp3</location>
+		</link>
+	</linkedResources>
+</projectDescription>

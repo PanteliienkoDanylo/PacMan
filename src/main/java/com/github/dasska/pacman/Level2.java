@@ -19,7 +19,7 @@ public class Level2 extends LevelBase {
 					new MonsterHorizontal(750, new Point(21,17), this),
 					new MonsterHorizontal(625, new Point(17,21), this),
 					new MonsterVertical(575, new Point(5,1), this),
-					new MonsterDecart(590, new Point(1,5), this),
+					new MonsterVertical(590, new Point(1,5), this),
 					new MonsterVertical(615, new Point(21,9), this),
 					new MonsterVertical(550, new Point(17,13), this),
 					new MonsterVertical(600, new Point(13,17), this),
@@ -55,7 +55,7 @@ public class Level2 extends LevelBase {
 			
 		}
 		
-		pacman = new Pacman(new Point(5, 13),  this);
+		pacman = new Pacman(new Point(1, 21),  this);
 	}
 
 	private void fillWals() {
