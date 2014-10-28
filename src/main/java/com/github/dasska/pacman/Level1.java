@@ -19,8 +19,7 @@ public class Level1 extends LevelBase {
 		coins.add(new Point(2, 3));
 		coins.add(new Point(3, 1));
 		coins.add(new Point(3, 2));
-		coins.add(new Point(3, 3));
-		
+
 		monsters = new Monster[] {
 					new MonsterHorizontal(1000, new Point(1,1), this)
 				};

@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 
 public class Main extends JFrame implements GameObserver {
-	private static final int MAX_LEVEL = 4;
+	private static final int MAX_LEVEL = 10;
 	
 	private PacmanPanel contentPane;
 	private int level;
@@ -17,6 +17,7 @@ public class Main extends JFrame implements GameObserver {
 	private Monster monster;
 	private JTextField textField;
 	private JTextField textField2;
+	private JTextField textField3;
 
 	/**
 	 * Launch the application.
@@ -49,7 +50,11 @@ public class Main extends JFrame implements GameObserver {
 
 		textField = new JTextField();
 		textField.setBounds(506, 67, 152, 33);
-		textField.setColumns(10);		
+		textField.setColumns(10);
+		
+		textField3 = new JTextField();
+		textField3.setBounds(506, 107, 152, 33);
+		textField3.setColumns(10);
 
 		level = 1;
 	}
@@ -64,7 +69,8 @@ public class Main extends JFrame implements GameObserver {
 		contentPane.setFocusable(true);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
-
+		
+		contentPane.add(textField3);
 		contentPane.add(textField2);
 		contentPane.add(textField);
 		
@@ -89,12 +95,19 @@ public class Main extends JFrame implements GameObserver {
 					break;
 			case 3: newGame = new Level3();
 					break;
+			case 4: newGame = new Level5();
+					break;
+			case 5: newGame = new Level6();
+					break;
+			case 6: newGame = new Level10();
+					break;
 		}
 		return newGame;
 	}
 	
 	public void refresh() {
 		textField2.setText(((Integer)game.getCoins().size()).toString());
+		textField3.setText(((Integer)game.getLife()).toString());
 	}
 	
 	public void win() {

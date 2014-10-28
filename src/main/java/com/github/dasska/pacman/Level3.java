@@ -13,7 +13,7 @@ public class Level3 extends LevelBase {
 		
 		monsters = new Monster[] {
 					
-					new MonsterDecart(675, new Point(9,21), this),					
+					new MonsterGraphBFS(675, new Point(9,21), this),					
 				};
 
 		pacman = new Pacman(new Point(3, 19),  this);

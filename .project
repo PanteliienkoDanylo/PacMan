@@ -32,9 +32,29 @@
 			<location>C:/Users/comp/Desktop/monsterWithBrain.jpg</location>
 		</link>
 		<link>
+			<name>src/main/resources/pacmanDown.jpg</name>
+			<type>1</type>
+			<location>C:/Users/comp/Desktop/pacmanDown.jpg</location>
+		</link>
+		<link>
+			<name>src/main/resources/pacmanLeft.jpg</name>
+			<type>1</type>
+			<location>C:/Users/comp/Desktop/pacmanLeft.jpg</location>
+		</link>
+		<link>
 			<name>src/main/resources/pacmanMuzik.mp3</name>
 			<type>1</type>
 			<location>C:/Users/comp/Desktop/pacmanMuzik.mp3</location>
+		</link>
+		<link>
+			<name>src/main/resources/pacmanRight.jpg</name>
+			<type>1</type>
+			<location>C:/Users/comp/Desktop/pacmanRight.jpg</location>
+		</link>
+		<link>
+			<name>src/main/resources/pacmanUp.jpg</name>
+			<type>1</type>
+			<location>C:/Users/comp/Desktop/pacmanUp.jpg</location>
 		</link>
 	</linkedResources>
 </projectDescription>

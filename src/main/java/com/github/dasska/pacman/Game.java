@@ -11,9 +11,14 @@ public abstract class Game {
 	public abstract Monster[] getMonsters();
 	public abstract Pacman getPacman();
 	public abstract Set<Point> getCoins();
+	public int life = 3;
 	
 	private List<GameObserver> observerList = new LinkedList<GameObserver>();
 	
+ 
+	public int getLife(){
+		return life;
+	}
 	public void addObserver(GameObserver observer) {
 		observerList.add(observer);
 	}
@@ -64,27 +69,38 @@ public abstract class Game {
 	
 	public boolean kill(Point point) {
 		boolean result = point.equals(getPacman().getPoint());
-		if (result) {
-			for (GameObserver observer: observerList)
-				observer.gameOver();
-		}
+			if (result) {
+				result = removeLife(result);
+			}
+		
 		return result;
 	}
 	
 	public boolean gameOver() {
 		boolean result = false;
-		for (Monster monster: getMonsters())
+		for (Monster monster: getMonsters()) {
 			if (getPacman().getPoint().equals(monster.getPoint())) {
 				result = true;
 				break;
 			}
+		}
 		if (result) {
-			for (GameObserver observer: observerList)
-				observer.gameOver();
+			result = removeLife(result);
 		}
 		return result;
 	}	
 	
+	private boolean removeLife(boolean result) {
+		if (life == 0) {
+			for (GameObserver observer: observerList)
+				observer.gameOver();
+		}
+		else {
+			life--;
+		}
+		return result;
+	}
+
 	public boolean win() {
 		boolean result = getCoins().size() == 0;
 		if (result) {

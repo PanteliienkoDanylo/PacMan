@@ -23,6 +23,10 @@ public class PacmanPanel extends JPanel implements GameObserver {
 	private BufferedImage wall;
 	private BufferedImage monster;
 	private BufferedImage pacman;
+	private BufferedImage pacmanRight;
+	private BufferedImage pacmanLeft;
+	private BufferedImage pacmanUp;
+	private BufferedImage pacmanDown;
 	private BufferedImage monsterWithBrain;
 	private AudioInputStream audioInputStream;
 
@@ -33,7 +37,11 @@ public class PacmanPanel extends JPanel implements GameObserver {
 		try {                
 	          wall = ImageIO.read(getClass().getResource("/wall.jpg"));
 	          monster = ImageIO.read(getClass().getResource("/monster.jpg"));
-	          pacman = ImageIO.read(getClass().getResource("/pacman.jpg"));
+	          pacman = ImageIO.read(getClass().getResource("/pacmanRight.jpg"));
+	          pacmanRight = ImageIO.read(getClass().getResource("/pacmanRight.jpg"));
+	          pacmanLeft = ImageIO.read(getClass().getResource("/pacmanLeft.jpg"));
+	          pacmanUp = ImageIO.read(getClass().getResource("/pacmanUp.jpg"));
+	          pacmanDown = ImageIO.read(getClass().getResource("/pacmanDown.jpg"));
 	          monsterWithBrain = ImageIO.read(getClass().getResource("/monsterWithBrain.jpg"));
 	          /*audioInputStream =AudioSystem.getAudioInputStream(
 	        		  this.getClass().getResource("/pacmanMuzik.mp3"));
@@ -53,15 +61,19 @@ public class PacmanPanel extends JPanel implements GameObserver {
 				switch (e.getKeyCode()){
 				case KeyEvent.VK_RIGHT:
 					game.getPacman().right();
+					pacman = pacmanRight;
 					break;
 				case KeyEvent.VK_LEFT:
 					game.getPacman().left();
+					pacman = pacmanLeft;
 					break;
 				case KeyEvent.VK_UP:
 					game.getPacman().up();
+					pacman = pacmanUp;
 					break;
 				case KeyEvent.VK_DOWN:
 					game.getPacman().down();
+					pacman = pacmanDown;
 					break;
 				}		
 			}
@@ -89,7 +101,6 @@ public class PacmanPanel extends JPanel implements GameObserver {
 		for (int i=0; i<game.getHeight(); i++)
 			for (int j=0; j<game.getHeight(); j++)
 				if (walls[i][j])
-					// g.fillRect(GAP+i*BOX, GAP+j*BOX, BOX, BOX);
 					g.drawImage(wall, GAP+i*BOX, GAP+j*BOX, BOX, BOX, null);
 	}
 	
@@ -97,27 +108,10 @@ public class PacmanPanel extends JPanel implements GameObserver {
     	for(Monster monster: game.getMonsters()) {
     		g.setColor(monster.getColor());
     		Point p = monster.getPoint();
-    		/*g.fillOval(
-    				GAP+p.getX()*BOX + BOX/2 - ROUND/2, 
-    				GAP+p.getY()*BOX + BOX/2 - ROUND/2, 
-    				ROUND, ROUND);*/
-    		if (monster instanceof MonsterDecart)
+    		if (monster instanceof MonsterGraphBFS)
     			g.drawImage(this.monsterWithBrain, GAP+p.getX()*BOX, GAP+p.getY()*BOX, BOX, BOX, null);
     		else
     			g.drawImage(this.monster, GAP+p.getX()*BOX, GAP+p.getY()*BOX, BOX, BOX, null);
-    		
-		}
-	}
-	
-	private void paintMonstersDecart(Graphics g) {
-    	for(Monster monster: game.getMonsters()) {
-    		g.setColor(monster.getColor());
-    		Point p = monster.getPoint();
-    		/*g.fillOval(
-    				GAP+p.getX()*BOX + BOX/2 - ROUND/2, 
-    				GAP+p.getY()*BOX + BOX/2 - ROUND/2, 
-    				ROUND, ROUND);*/
-    		g.drawImage(this.monster, GAP+p.getX()*BOX, GAP+p.getY()*BOX, BOX, BOX, null);
     		
 		}
 	}
@@ -136,10 +130,6 @@ public class PacmanPanel extends JPanel implements GameObserver {
 	private void paintPackman(Graphics g) {
 		g.setColor(Color.BLUE);
 		Point p = game.getPacman().getPoint();
-    	/*g.fillOval(
-    			GAP+p.getX()*BOX + BOX/2 - ROUND/2, 
-    			GAP+p.getY()*BOX + BOX/2 - ROUND/2, 
-    			ROUND, ROUND);	*/	
 		g.drawImage(pacman, GAP+p.getX()*BOX, GAP+p.getY()*BOX, BOX, BOX, null);
 	}
 	

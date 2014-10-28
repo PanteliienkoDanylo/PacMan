@@ -1,12 +1,13 @@
 package com.github.dasska.pacman;
 
 import java.awt.Color;
+import java.util.Date;
 
 public abstract class Monster implements Runnable {
 	private int sleep;
 	private Thread thread;
 	
-	protected Point point;
+	protected volatile Point point;
 	protected Game game;
 	protected Color color;
 	
@@ -47,12 +48,15 @@ public abstract class Monster implements Runnable {
 	public void run() {
 		while (isRunning()) {
 			move();
-			game.kill(getPoint());
+			boolean killed = game.kill(getPoint());
 				
 			game.refresh();
 			
 			try {
 				Thread.sleep(sleep);
+				if (killed) {
+					Thread.sleep(2000);
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

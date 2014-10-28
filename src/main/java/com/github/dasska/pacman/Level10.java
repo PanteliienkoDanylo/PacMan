@@ -3,8 +3,8 @@ package com.github.dasska.pacman;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class Level4 extends LevelBase {
-	public Level4() {
+public class Level10 extends LevelBase {
+	public Level10() {
 		width = 23;
 		height = 23;
 		
@@ -12,10 +12,10 @@ public class Level4 extends LevelBase {
 		fillWals();
 		
 		monsters = new Monster[] {
-					new MonsterDecart(500, new Point(1,1), this),
-					new MonsterDecart(550, new Point(1,22), this),
-					new MonsterDecart(450, new Point(22,1), this),
-					new MonsterDecart(475, new Point(21,21), this),
+					new MonsterGraphBFS(500, new Point(1,1), this),
+					new MonsterGraphBFS(550, new Point(1,21), this),
+					new MonsterGraphBFS(450, new Point(21,1), this),
+					new MonsterGraphBFS(475, new Point(21,21), this),
 					
 					new MonsterHorizontal(425, new Point(5,1), this),
 					new MonsterHorizontal(450, new Point(1,3), this),
