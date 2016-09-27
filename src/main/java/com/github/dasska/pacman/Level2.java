@@ -23,7 +23,8 @@ public class Level2 extends LevelBase {
 		coins.remove(new Point(5,5));
 		coins.remove(new Point(6,6));
 		coins.remove(new Point(7,7));
-		
+		coins.remove(new Point(8,8));
+
 		
 		monsters = new Monster[] {
 					new MonsterGraphBFS(1000, new Point(1,1), this)

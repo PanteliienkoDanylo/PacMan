@@ -91,7 +91,7 @@ public abstract class Game {
 	}	
 	
 	private boolean removeLife(boolean result) {
-		if (life == 0) {
+		if (life == 1) {
 			for (GameObserver observer: observerList)
 				observer.gameOver();
 		}

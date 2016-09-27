@@ -5,21 +5,36 @@ import java.util.HashSet;
 
 public class Level3 extends LevelBase {
 	public Level3() {
-		width = 23;
-		height = 23;
+		width = 10;
+		height = 10;
 		
 		walls = new boolean[width][height];
 		fillWals();
 		
 		monsters = new Monster[] {
-					
-					new MonsterGraphBFS(675, new Point(9,21), this),					
+
+					new MonsterGraphBFS(1000, new Point(4,6), this),
+					new MonsterVertical(750, new Point(8,7), this),
+					new MonsterVertical(800, new Point(1,2), this),
 				};
 
-		pacman = new Pacman(new Point(3, 19),  this);
+		pacman = new Pacman(new Point(1, 8),  this);
 		
 		coins = new HashSet<Point>();
-		coins.add(new Point(1, 1));
+		for(int i=0; i < width; i++){
+			coins.add(new Point(i, 1));
+			coins.add(new Point(i, 8));
+		}
+		for(int i=1; i < width-1; i++){
+			coins.add(new Point(1, i));
+			coins.add(new Point(8, i));
+		}
+		for(int i=2; i < width-2; i++){
+			coins.add(new Point(i, 4));
+			coins.add(new Point(i, 5));
+		}
+		coins.remove(new Point(1, 8));
+
 	}
 
 	private void fillWals() {
@@ -28,223 +43,20 @@ public class Level3 extends LevelBase {
 		Arrays.fill(walls[0], true);
 		Arrays.fill(walls[width-1], true);
 		
-		for(int i=0; i<width; i++) {
+		for(int i=0; i < width; i++) {
 			walls[i][0] = true;
 			walls[i][height-1] = true;
 		}
 		
-		walls[0][15] = false;
-		walls[22][15] = false;
-		
-		
-		walls[2][5] = true;
-		walls[2][6] = true;
-		walls[2][7] = true;
-		walls[2][8] = true;
-		walls[2][10] = true;
-		walls[2][12] = true;
-		walls[2][13] = true;
-		walls[2][14] = true;
-		walls[2][16] = true;
-		walls[2][17] = true;
-		walls[2][18] = true;
-		walls[2][19] = true;
-		walls[2][20] = true;
-		walls[2][19] = true;
-		walls[3][3] = true;
-		walls[3][5] = true;
-		walls[3][6] = true;
-		walls[3][7] = true;
-		walls[3][8] = true;
-		walls[3][9] = true;
-		walls[3][10] = true;
-		walls[3][12] = true;
-		walls[3][13] = true;
-		walls[3][14] = true;
-		walls[3][16] = true;
-		walls[3][20] = true;
-		walls[4][5] = true;
-		walls[4][7] = true;
-		walls[4][8] = true;
-		walls[4][9] = true;
-		walls[4][10] = true;
-		walls[4][12] = true;
-		walls[4][13] = true;
-		walls[4][18] = true;
-		walls[4][19] = true;
-		walls[4][20] = true;		
-		walls[5][2] = true;
-		walls[5][3] = true;
-		walls[5][4] = true;
-		walls[5][5] = true;
-		walls[5][7] = true;
-		walls[5][13] = true;
-		walls[5][16] = true;
-		walls[5][19] = true;
-		walls[6][2] = true;
-		walls[6][3] = true;
-		walls[6][4] = true;
-		walls[6][5] = true;
-		walls[6][7] = true;
-		walls[6][8] = true;
-		walls[6][9] = true;
-		walls[6][10] = true;
-		walls[6][12] = true;
-		walls[6][13] = true;
-		walls[6][16] = true;
-		walls[6][19] = true;
-		walls[6][20] = true;
-		walls[7][7] = true;
-		walls[7][8] = true;
-		walls[7][9] = true;
-		walls[7][10] = true;
-		walls[7][12] = true;
-		walls[7][13] = true;
-		walls[7][14] = true;
-		walls[7][15] = true;
-		walls[7][16] = true;
-		walls[7][19] = true;
-		walls[7][20] = true;
-		walls[8][2] = true;
-		walls[8][3] = true;
-		walls[8][5] = true;
-		walls[8][8] = true;
-		walls[8][9] = true;
-		walls[8][10] = true;
-		walls[8][11] = true;
-		walls[8][12] = true;
-		walls[8][13] = true;
-		walls[8][14] = true;
-		walls[8][15] = true;
-		walls[8][16] = true;
-		walls[8][19] = true;
-		walls[8][20] = true;
-		walls[9][2] = true;
-		walls[9][3] = true;
-		walls[9][4] = true;
-		walls[9][5] = true;
-		walls[9][7] = true;
-		walls[9][8] = true;
-		walls[9][9] = true;
-		walls[9][14] = true;
-		walls[9][15] = true;
-		walls[9][16] = true;
-		walls[9][19] = true;
-		walls[9][20] = true;
-		walls[10][2] = true;
-		walls[10][3] = true;
-		walls[10][4] = true;
-		walls[10][5] = true;
-		walls[10][7] = true;
-		walls[10][8] = true;
-		walls[10][11] = true;
-		walls[10][12] = true;
-		walls[10][15] = true;
-		walls[10][16] = true;
-		walls[10][19] = true;
-		walls[10][20] = true;
-		walls[11][2] = true;
-		walls[11][3] = true;
-		walls[11][4] = true;
-		walls[11][5] = true;
-		walls[11][6] = true;
-		walls[11][7] = true;
-		walls[11][16] = true;
-		walls[11][19] = true;
-		walls[12][9] = true;
-		walls[12][15] = true;
-		walls[12][16] = true;
-		walls[12][19] = true;
-		walls[12][20] = true;
-		walls[13][9] = true;
-		walls[13][11] = true;
-		walls[13][13] = true;
-		walls[13][14] = true;
-		walls[13][15] = true;
-		walls[13][16] = true;
-		walls[13][20] = true;
-		walls[14][2] = true;
-		walls[14][3] = true;
-		walls[14][4] = true;
-		walls[14][5] = true;
-		walls[14][6] = true;
-		walls[14][9] = true;
-		walls[14][13] = true;
-		walls[14][14] = true;
-		walls[14][15] = true;
-		walls[14][16] = true;
-		walls[14][19] = true;
-		walls[14][20] = true;
-		walls[15][2] = true;
-		walls[15][3] = true;
-		walls[15][4] = true;
-		walls[15][5] = true;
-		walls[15][6] = true;
-		walls[15][7] = true;
-		walls[15][12] = true;
-		walls[15][13] = true;
-		walls[15][14] = true;
-		walls[15][20] = true;
-		walls[16][6] = true;
-		walls[16][7] = true;
-		walls[16][8] = true;
-		walls[16][9] = true;
-		walls[16][10] = true;
-		walls[16][11] = true;
-		walls[16][12] = true;
-		walls[16][13] = true;
-		walls[16][14] = true;
-		walls[16][20] = true;
-		walls[17][3] = true;
-		walls[17][5] = true;
-		walls[17][6] = true;
-		walls[17][7] = true;
-		walls[17][8] = true;
-		walls[17][10] = true;
-		walls[17][11] = true;
-		walls[17][12] = true;
-		walls[17][13] = true;
-		walls[17][14] = true;
-		walls[17][15] = true;
-		walls[17][16] = true;
-		walls[17][20] = true;
-		walls[18][3] = true;
-		walls[18][5] = true;
-		walls[18][6] = true;
-		walls[18][7] = true;
-		walls[18][8] = true;
-		walls[18][11] = true;
-		walls[18][12] = true;
-		walls[18][13] = true;
-		walls[18][14] = true;
-		walls[18][15] = true;
-		walls[18][19] = true;
-		walls[18][20] = true;
-		walls[19][3] = true;
-		walls[19][5] = true;
-		walls[19][6] = true;
-		walls[19][7] = true;
-		walls[19][8] = true;
-		walls[19][10] = true;
-		walls[19][11] = true;
-		walls[19][12] = true;
-		walls[19][13] = true;
-		walls[19][14] = true;
-		walls[19][15] = true;
-		walls[19][19] = true;
-		walls[20][5] = true;
-		walls[20][6] = true;
-		walls[20][8] = true;
-		walls[20][10] = true;
-		walls[20][11] = true;
-		walls[20][12] = true;
-		walls[20][14] = true;
-		walls[20][15] = true;
-		walls[20][16] = true;
-		walls[20][17] = true;
-		walls[20][18] = true;
-		walls[20][19] = true;
-		walls[20][20] = true;
-				
+		for(int i=2; i < width-2; i++ ){
+			walls[i][2] = true;
+			walls[i][3] = true;
+			walls[i][6] = true;
+			walls[i][7] = true;
+		}
+		walls[0][1] = false;
+		walls[0][8] = false;
+		walls[9][1] = false;
+		walls[9][8] = false;
 	}
 }

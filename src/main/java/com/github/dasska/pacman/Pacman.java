@@ -20,6 +20,7 @@ public class Pacman {
 		}
 	}
 
+
 	public void down() {
 		if (game.canMoveDown(point)) {
 			point.down(game.getHeight());

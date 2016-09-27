@@ -83,12 +83,18 @@ public class PacmanPanel extends JPanel implements GameObserver {
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(Color.black);
+		//paintBackground(g);
 		paintWalls(g);
 		paintCoins(g);
 		paintMonsters(g);
 		paintPackman(g);
 	}
-	
+	private void paintBackground(Graphics g){
+		g.setColor(Color.gray);
+		g.fillRect(1, 1, 750, 550);
+
+	}
+
 	private void paintWalls(Graphics g) {
 		g.setColor(Color.BLACK);
 		for (int i=0; i<game.getHeight(); i++)

@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 
 
 public class Main extends JFrame implements GameObserver {
-	private static final int MAX_LEVEL = 10;
+	private static final int MAX_LEVEL = 8;
 	
 	private PacmanPanel contentPane;
 	private int level;
@@ -85,7 +85,7 @@ public class Main extends JFrame implements GameObserver {
 		this.repaint();
 		
 	}
-	
+
 	private Game createGame(int level) {
 		Game newGame = null;
 		switch (level) {
@@ -95,19 +95,29 @@ public class Main extends JFrame implements GameObserver {
 					break;
 			case 3: newGame = new Level3();
 					break;
-			case 4: newGame = new Level5();
+			case 4: newGame = new Level4();
 					break;
-			case 5: newGame = new Level6();
+			case 5: newGame = new Level5();
 					break;
-			case 6: newGame = new Level10();
+			case 6: newGame = new Level6();
 					break;
+			case 7: newGame = new Level7();
+					break;
+			case 8: newGame = new Level8();
+					break;
+			/*case 9: newGame = new Level9();
+					break;
+			case 10: newGame = new Level1();
+					break;*/
+
+
 		}
 		return newGame;
 	}
 	
 	public void refresh() {
-		textField2.setText(((Integer)game.getCoins().size()).toString());
-		textField3.setText(((Integer)game.getLife()).toString());
+		textField2.setText("Coins " + ((Integer)game.getCoins().size()).toString());
+		textField3.setText("Lifes " + ((Integer)game.getLife()).toString());
 	}
 	
 	public void win() {
@@ -129,7 +139,10 @@ public class Main extends JFrame implements GameObserver {
 	}
 	
 	public void gameOver() {
+		//contentPane.setFocusable(false);
+		//System.exit(0);
 		textField.setText("Game Over !");
     	game.stop();
+		startLevel();
 	}	
 }
